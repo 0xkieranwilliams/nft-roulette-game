@@ -105,7 +105,7 @@ export default function GamePortfolio() {
   const { title, subtitle } = getPageTitle();
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
     <main className="container pt-24">
       <div className="mb-12">
         <h1 className="text-4xl font-bold mb-2">{title}</h1>

@@ -32,7 +32,7 @@ export default function GameDetail() {
   };
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="container pt-24">
       <div className="max-w-4xl mx-auto">
         <div className="card p-6">
