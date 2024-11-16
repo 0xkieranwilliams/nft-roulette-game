@@ -20,7 +20,7 @@ function AccountInfo() {
 export default function Navbar() {
   return (
     <div className="navbar">
-      <Image src="/spiinz-logo.png" width="130" height="130" alt="logo"/>
+      <Image src="/spiinz-logo.png" width="100" height="100" alt="logo"/>
       <DynamicWidget />
     </div>
   )
