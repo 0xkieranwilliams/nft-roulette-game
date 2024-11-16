@@ -1,6 +1,5 @@
 "use client";
-
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
@@ -33,6 +32,7 @@ export default function GameDetail() {
   };
 
   return (
+    <Suspense>
     <div className="container pt-24">
       <div className="max-w-4xl mx-auto">
         <div className="card p-6">
@@ -142,5 +142,6 @@ export default function GameDetail() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }

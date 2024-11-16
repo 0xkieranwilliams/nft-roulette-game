@@ -1,4 +1,5 @@
 "use client";
+import React, { Suspense } from 'react';
 import { useContractRead } from 'wagmi';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -104,6 +105,7 @@ export default function GamePortfolio() {
   const { title, subtitle } = getPageTitle();
 
   return (
+    <Suspense>
     <main className="container pt-24">
       <div className="mb-12">
         <h1 className="text-4xl font-bold mb-2">{title}</h1>
@@ -126,5 +128,6 @@ export default function GamePortfolio() {
         )}
       </div>
     </main>
+    </Suspense>
   );
 }
