@@ -33,7 +33,6 @@ export default function CreateGame() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("helloooo")
     
     if (!address) {
       toast.error('Please connect your wallet first');

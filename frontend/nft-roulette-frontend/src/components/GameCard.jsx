@@ -1,7 +1,9 @@
 import { formatEther } from 'viem';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function GameCard({ game }) {
+export default function GameCard({ game, userType }) {
+  const searchParams = useSearchParams();
   const {
     id,
     nftContract,
@@ -53,8 +55,8 @@ export default function GameCard({ game }) {
           <p className="text-sm text-gray-400 truncate mb-4">
             NFT: {nftContract}#{tokenId.toString()}
           </p>
-          <Link href={`/games/${id}`} className="block w-full">
-            <button className="w-full">Enter Game</button>
+          <Link href={`/game?user=${userType}`} className="block w-full">
+            <button className="w-full">Open Game</button>
           </Link>
         </div>
       </div>
