@@ -7,7 +7,9 @@ Hey NFT gamers! Let's dive into how our game really works under the hood. It's p
 Entry starts at 0.01 ETH (about $25 at $2500/ETH) for all games, regardless of floor price.
 This minimum increases as the game progresses, based on total funds and the NFT's floor price. The increase is non-linear, with the most significant jumps happening in the early stages of funding.
 
-![Min contribution algorithm]()
+![Min contribution algorithm](https://raw.githubusercontent.com/0xkieranwilliams/nft-roulette-game/refs/heads/main/assets/imgs/min-contribution-fee-algo.svg)
+
+
 
 Examples of how the minimum could range in different games:
 
@@ -104,7 +106,7 @@ Three ways this rollercoaster can stop:
 <!--       +-------------------- Bands --> 
 <!-- ``` -->
 
-![contribution % floor pricce and bands graph]()
+![contribution % floor price and bands graph](https://raw.githubusercontent.com/0xkieranwilliams/nft-roulette-game/refs/heads/main/assets/imgs/min-contribution-fee-algo.svg)
 
 Remember, in this game you're not climbing a corporate ladder, you're scaling the bands of chance! Where will you land? Only time (and your ETH) will tell!
 
@@ -120,7 +122,7 @@ This isn't just a game, it's a thrill ride with an NFT cherry on top. So insert 
 
 # Why List Your NFT With Us: Turn Your Digital Art into a Thrilling Game!
 
-![why list with us]()
+![why list with us](https://raw.githubusercontent.com/0xkieranwilliams/nft-roulette-game/refs/heads/main/assets/imgs/why-list-with-us.svg)
 
 Hey there, NFT creator extraordinaire! 👋 Got a prized digital asset you're looking to sell? Forget the usual marketplaces – let's turn your NFT sale into an event people will be buzzing about! Here's why you should list your NFT with us:
 
