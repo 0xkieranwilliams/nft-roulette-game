@@ -109,7 +109,7 @@ Three ways this rollercoaster can stop:
 <!--       +-------------------- Bands --> 
 <!-- ``` -->
 
-![contribution % floor price and bands graph](https://raw.githubusercontent.com/0xkieranwilliams/nft-roulette-game/refs/heads/main/assets/imgs/min-contribution-fee-algo.svg)
+![contribution % floor price and bands graph](https://raw.githubusercontent.com/0xkieranwilliams/nft-roulette-game/9fb5509e6b0d6410d5b7ff9c704317c5ba8e048d/assets/imgs/contribution-band-by-contribution-chart.svg)
 
 Remember, in this game you're not climbing a corporate ladder, you're scaling the bands of chance! Where will you land? Only time (and your ETH) will tell!
 
