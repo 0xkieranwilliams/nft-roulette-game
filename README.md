@@ -1,3 +1,6 @@
+# Sepolia Deployed Contract Address: 0x27013320E8e71995609240D61914E2f25437181c
+
+
 # How Our NFT Game Works: From Start to Finish
 
 Hey NFT gamers! Let's dive into how our game really works under the hood. It's pretty clever, and understanding it might just give you an edge!
