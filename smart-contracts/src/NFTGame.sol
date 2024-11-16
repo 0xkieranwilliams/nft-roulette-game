@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import {console} from "forge-std/Console.sol";
 import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import {ERC721Holder} from "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
@@ -82,6 +81,12 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
 
     /// @dev Mapping of game ID to list of player addresses
     mapping(uint256 gameId => address[] playerAddresses) public s_gameParticipants;
+
+    // Storage variable to hold all active game IDs
+    uint256[] public s_activeGames;
+
+    // Mapping from gameId to index in the s_activeGames array
+    mapping(uint256 => uint256) public s_gameIdToActiveGameIndex;
 
     /// @dev Mapping of player address to list of active game IDs
     mapping(address playerAddress => uint256[] gameIds) public s_playerActiveGames;
@@ -364,11 +369,13 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
             salt: _salt
         });
 
+        _addActiveGame(currentGameId);
         _addActiveGameForCreator(msg.sender, currentGameId);
         emit GameCreated(currentGameId, msg.sender, _nftContract, _tokenId);
         unchecked {
             s_gameCounter = currentGameId + 1;
         }
+
         return currentGameId;
     }
 
@@ -441,6 +448,7 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
         // Transfer the NFT back to the game creator
         IERC721(game.nftContract).safeTransferFrom(address(this), msg.sender, game.tokenId);
 
+        _removeActiveGame(_gameId);
         emit GameCancelled(_gameId, msg.sender);
     }
 
@@ -500,6 +508,7 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
         s_gameIdToRequestId[_gameId] = requestId;
 
         // Distribute the funds to the relevant accounts
+        _removeActiveGame(_gameId);
         _distributeGameFunds(game.totalFunds, game.nftOwner);
     }
 
@@ -809,11 +818,8 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
         uint256 randomNumber1 = uint256(keccak256(abi.encodePacked(randomWords[0], game.salt)));
         uint256 randomNumber2 = uint256(keccak256(abi.encodePacked(randomWords[1], game.salt)));
 
-        console.log("randomNumber1"); console.log(randomNumber1);
-        console.log("randomNumber2"); console.log(randomNumber2);
-
         address winner = _chooseWinner(gameId, randomNumber1, randomNumber2);
-        console.log("winner"); console.log(winner);
+
 
         // Transfer NFT to winner
         IERC721(game.nftContract).safeTransferFrom(address(this), winner, game.tokenId);
@@ -1075,6 +1081,26 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
         s_playerGameIndexInActiveGames[_gameId][_playerAddress] = (s_playerActiveGames[_playerAddress]).length - 1;
     }
 
+    // Function to add a game to the active games list
+    function _addActiveGame(uint256 _gameId) internal {
+        s_gameIdToActiveGameIndex[_gameId] = s_activeGames.length;
+        s_activeGames.push(_gameId);
+    }
+
+    // Function to remove a game from the active games list
+    function _removeActiveGame(uint256 _gameId) internal {
+        uint256 index = s_gameIdToActiveGameIndex[_gameId];
+        uint256 lastIndex = s_activeGames.length - 1;
+
+        if (index != lastIndex) {
+            uint256 lastGameId = s_activeGames[lastIndex];
+            s_activeGames[index] = lastGameId;
+            s_gameIdToActiveGameIndex[lastGameId] = index;
+        }
+
+        s_activeGames.pop();
+        delete s_gameIdToActiveGameIndex[_gameId];
+    }
     
     /**
      * @notice Updates a player's band in a game
@@ -1137,3 +1163,4 @@ contract NFTGame is ConfirmedOwnerWithProposal, ReentrancyGuard, Pausable, ERC72
     }
 
 }
+
