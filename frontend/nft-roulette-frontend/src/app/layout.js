@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
+import React, { Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import Providers from "@/lib/providers"
@@ -29,9 +30,11 @@ export default function RootLayout({ children }) {
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Providers> 
-            <Navbar/>
-            <Toaster position="top-right" />
-            {children}
+            <Suspense fallback={<div>Loading...</div>}>
+              <Navbar/>
+              <Toaster position="top-right" />
+              {children}
+            </Suspense>
           </Providers> 
         </body>
     </html>
