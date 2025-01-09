@@ -1,6 +1,6 @@
 ---
 
-# Deployed Site: [https://spiinz-bo9ebnmvj-0xkieranwilliams-projects.vercel.app/](https://spiinz-bo9ebnmvj-0xkieranwilliams-projects.vercel.app/)
+# Deployed Site: [https://spiinz.vercel.app/](https://spiinz.vercel.app/)
 
 ---
 
