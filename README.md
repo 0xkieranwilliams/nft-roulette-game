@@ -1,3 +1,71 @@
+# Project Description
+Our platform revolutionizes NFT gaming and sales by blending excitement, strategy, and fairness. Players compete for top-tier NFTs by contributing ETH, with a unique system that determines minimum contributions based on total funds and the NFT's floor price. Contributions increase dynamically as the game progresses, offering opportunities for everyone—from casual participants to high-stakes players.
+
+## How It Works 
+### Minimum Contributions: 
+Start at just 0.01 ETH and increase non-linearly as the game develops. Contributions cap at 8% of the NFT’s floor price, ensuring accessibility for all budgets. 
+
+### Band System: 
+Players are grouped into tiers (Bands) based on their contributions relative to the NFT’s floor price. Higher bands offer better odds of winning, incentivizing strategic play. Leveling Up: Players can boost their chances by contributing more ETH to climb bands, adding an element of progression and competition. 
+
+### Winner Selection: 
+Using Chainlink VRF for randomness, the platform ensures a fair and transparent process. A band is chosen, and a random winner is selected from within it. 
+
+### Game Outcomes Normal Ending: 
+At the set duration, a winner is chosen, the NFT is transferred, and the creator receives the proceeds. Cancellation: If the game doesn’t attract enough participants, the creator can cancel it, ensuring refunds for contributors. 
+
+### Player Refunds: 
+Players can reclaim their contributions if the game is canceled. 
+
+## Why It Stands Out 
+### Dynamic Gameplay: 
+Keeps participants engaged and rewards both strategy and chance. 
+
+### Fair and Transparent: 
+Blockchain technology ensures trust in every transaction and decision. 
+
+### Maximized Profits for Creators: 
+Unique gameplay mechanics often exceed standard marketplace floor prices. 
+
+### Seamless User Experience: 
+Easy setup for creators and engaging gameplay for participants. This platform redefines NFT interactions, transforming them into thrilling, fair, and rewarding experiences for gamers and creators alike. Whether you're looking to win coveted NFTs or list your digital assets with a twist, our platform offers a unique and innovative solution.
+
+### For Creators 
+NFT creators can list their assets as part of a thrilling game experience instead of traditional marketplace listings. This format drives buzz and engagement, often leading to contributions exceeding the NFT’s floor price. The process is trustless, secure, and seamless, with automatic payouts at the game’s conclusion.
+
+---
+
+# How it's Made
+## Technologies Used
+### Chainlink VRF: 
+For provably fair random winner selection. Chainlink Data Feeds: For real-time ETH price conversions. 
+
+### Sepolia Testnet: 
+Smart contract deployment and testing environment. 
+
+### Foundry Framework: 
+For creating and testing smart contracts. 
+
+### React: 
+Frontend framework for dynamic and responsive UI. 
+
+### wagmi: 
+For seamless smart contract interactions. 
+
+### Dynamic Wallet: 
+Web3 wallet integrated with wagmi for smooth user experience. 
+
+### How We Built It 
+The project’s smart contracts were developed and tested using Foundry, incorporating Chainlink VRF for randomness in winner selection and Chainlink Data Feeds for dynamic pricing. Contracts are deployed on the Sepolia Testnet, ensuring a realistic and flexible testing environment.
+
+On the frontend, we used React to create an intuitive UI. Dynamic Wallet, integrated with wagmi, provides seamless Web3 wallet functionality, enabling users to connect, contribute ETH, and interact with contracts effortlessly.
+
+Notable Hacks: We implemented a gas-optimized non-linear algorithm for band progression to ensure fairness without heavy on-chain computations. Synchronizing Chainlink VRF and Data Feeds in a single contract was a technical challenge, but precise orchestration ensured smooth gameplay mechanics.
+
+The smart contract has been tested thoroughly to ensure the game play works as expected with mock smart contracts for all scenarios of gameplaya.
+
+I have run game simulation tests to check that the band system works (users that contribute more and end up in higher bands win more) over a large number of games. I have also tested that the minimum contribution increases to a fixed percentage based point as the game's funds increase.
+
 ---
 
 # Deployed Site: [https://spiinz.vercel.app/](https://spiinz.vercel.app/)
